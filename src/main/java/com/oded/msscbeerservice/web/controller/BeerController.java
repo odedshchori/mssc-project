@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
-@RequestMapping("/api/v1/beer")
+@RequestMapping("/api/v1/beer/")
 @RestController
 public class BeerController {
 
@@ -23,12 +23,6 @@ public class BeerController {
 
     @PutMapping("/{beerId}")
     public ResponseEntity updateBeerById(@PathVariable("beerId") UUID beerId, @RequestBody BeerDto beerDto) {
-        return new ResponseEntity(HttpStatus.NO_CONTENT);
-    }
-
-
-    @DeleteMapping("/{beerId}")
-    public ResponseEntity updateBeerById(@PathVariable("beerId") UUID beerId) {
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 }
