@@ -25,12 +25,12 @@ public class CustomerController {
 
 
     @PostMapping
-    public ResponseEntity addCustomer(@RequestBody CustomerDto customer) {
+    public ResponseEntity<Void> addCustomer(@RequestBody CustomerDto customer) {
         UUID uuid = service.addCustomer(customer);
         HttpHeaders headers = new HttpHeaders();
         headers.add("Location", "/api/v1/customer/" + uuid.toString());
 
-        return new ResponseEntity(headers, HttpStatus.CREATED);
+        return new ResponseEntity<>(headers, HttpStatus.CREATED);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
