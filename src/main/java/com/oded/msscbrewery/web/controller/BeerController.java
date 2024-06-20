@@ -3,14 +3,14 @@ package com.oded.msscbrewery.web.controller;
 
 import com.oded.msscbrewery.services.BeerService;
 import com.oded.msscbrewery.web.model.BeerDto;
-import com.sun.net.httpserver.Headers;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
-@RequestMapping("/api/v1/beer")
+@RequestMapping("/api/v1/beer/")
 @RestController
 public class BeerController {
 
@@ -27,12 +27,12 @@ public class BeerController {
     }
 
     @PostMapping
-    public ResponseEntity addBeer(@RequestBody BeerDto beer) {
+    public ResponseEntity<Void> addBeer(@RequestBody BeerDto beer) {
         UUID uuid = beerService.addBeer(beer);
-        Headers headers = new Headers();
+        HttpHeaders headers = new HttpHeaders();
         headers.add("Location", "/api/v1/beer/" + uuid.toString());
 
-        return new ResponseEntity(headers, HttpStatus.CREATED);
+        return new ResponseEntity<>(headers, HttpStatus.CREATED);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
