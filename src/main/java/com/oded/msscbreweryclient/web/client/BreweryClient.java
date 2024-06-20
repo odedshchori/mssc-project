@@ -3,7 +3,6 @@ package com.oded.msscbreweryclient.web.client;
 import com.oded.msscbreweryclient.web.model.BeerDto;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Component;
-import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
@@ -28,5 +27,9 @@ public class BreweryClient {
 
     public URI saveNewBeer(BeerDto beerDto) {
         return restTemplate.postForLocation(apihost + BEER_PATH_V1, beerDto);
+    }
+
+    public void updateBeer(UUID uuid, BeerDto beerDto) {
+        restTemplate.put(apihost + BEER_PATH_V1 + uuid, beerDto);
     }
 }
