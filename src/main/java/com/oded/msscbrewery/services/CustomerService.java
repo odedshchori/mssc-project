@@ -9,7 +9,7 @@ public interface CustomerService {
 
     UUID addCustomer(CustomerDto beer);
 
-    void updateCustomer(UUID beerId, CustomerDto beer);
+    void updateCustomer(UUID customerId, CustomerDto beer);
 
     void deleteCustomer(UUID beerId);
 }

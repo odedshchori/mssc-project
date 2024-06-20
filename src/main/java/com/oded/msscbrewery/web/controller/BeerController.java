@@ -21,7 +21,7 @@ public class BeerController {
         this.beerService = beerService;
     }
 
-    @GetMapping("/{beerId}")
+    @GetMapping("{beerId}")
     public ResponseEntity<BeerDto> getBeer(@PathVariable("beerId") UUID beerId) {
         return ResponseEntity.ok(beerService.getBeerById(beerId));
     }
@@ -36,14 +36,14 @@ public class BeerController {
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @PutMapping("/{beerId}")
+    @PutMapping("{beerId}")
     public void updateBeer(@PathVariable("beerId") UUID beerId, @RequestBody BeerDto beer) {
         beerService.updateBeer(beerId, beer);
     }
 
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @DeleteMapping("/{beerId}")
+    @DeleteMapping("{beerId}")
     public void delete(@PathVariable("beerId") UUID beerId) {
         beerService.deleteBeer(beerId);
     }

@@ -19,7 +19,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public UUID addCustomer(CustomerDto beer) {
+    public UUID addCustomer(CustomerDto customer) {
         return CustomerDto.builder()
                 .id(UUID.randomUUID())
                 .customerName("Joe Smith")
@@ -27,12 +27,12 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void updateCustomer(UUID beerId, CustomerDto beer) {
-        log.debug("update beer " + beerId.toString());
+    public void updateCustomer(UUID customerId, CustomerDto customer) {
+        log.debug("update customer " + customerId.toString());
     }
 
     @Override
-    public void deleteCustomer(UUID beerId) {
-        log.debug("delete beer " + beerId.toString());
+    public void deleteCustomer(UUID customerId) {
+        log.debug("delete customer " + customerId.toString());
     }
 }
