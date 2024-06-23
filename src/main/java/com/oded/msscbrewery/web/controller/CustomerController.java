@@ -2,6 +2,7 @@ package com.oded.msscbrewery.web.controller;
 
 import com.oded.msscbrewery.services.CustomerService;
 import com.oded.msscbrewery.web.model.CustomerDto;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +26,7 @@ public class CustomerController {
 
 
     @PostMapping
-    public ResponseEntity<Void> addCustomer(@RequestBody CustomerDto customer) {
+    public ResponseEntity<Void> addCustomer(@Valid @RequestBody CustomerDto customer) {
         UUID uuid = service.addCustomer(customer);
         HttpHeaders headers = new HttpHeaders();
         headers.add("Location", "/api/v1/customer/" + uuid.toString());
@@ -35,8 +36,8 @@ public class CustomerController {
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PutMapping("{customerId}")
-    public void updateCustomer(@PathVariable("customerId") UUID customerId, @RequestBody CustomerDto beer) {
-        service.updateCustomer(customerId, beer);
+    public void updateCustomer(@PathVariable("customerId") UUID customerId, @Valid @RequestBody CustomerDto customerDto) {
+        service.updateCustomer(customerId, customerDto);
     }
 
 

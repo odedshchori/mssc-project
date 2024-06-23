@@ -3,6 +3,7 @@ package com.oded.msscbrewery.web.controller;
 
 import com.oded.msscbrewery.services.BeerService;
 import com.oded.msscbrewery.web.model.BeerDto;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,8 +28,8 @@ public class BeerController {
     }
 
     @PostMapping
-    public ResponseEntity<Void> addBeer(@RequestBody BeerDto beer) {
-        UUID uuid = beerService.addBeer(beer);
+    public ResponseEntity<Void> addBeer(@Valid @RequestBody BeerDto beer) {
+        UUID uuid = beerService.addBeer(beer).getId();
         HttpHeaders headers = new HttpHeaders();
         headers.add("Location", "/api/v1/beer/" + uuid.toString());
 
@@ -37,7 +38,7 @@ public class BeerController {
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PutMapping("{beerId}")
-    public void updateBeer(@PathVariable("beerId") UUID beerId, @RequestBody BeerDto beer) {
+    public void updateBeer(@PathVariable("beerId") UUID beerId,@Valid @RequestBody BeerDto beer) {
         beerService.updateBeer(beerId, beer);
     }
 
