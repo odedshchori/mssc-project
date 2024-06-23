@@ -1,6 +1,7 @@
 package com.oded.msscbrewery.web.model;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Null;
 import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
@@ -23,7 +24,7 @@ public class BeerDto {
     @NotBlank
     private String beerName;
 
-    @NotBlank
+    @NotNull
     private BeerStyleEnum beerStyle;
 
     @Positive
