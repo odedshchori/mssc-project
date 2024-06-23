@@ -1,6 +1,7 @@
 package com.oded.msscbrewery.services;
 
 import com.oded.msscbrewery.web.model.BeerDto;
+import com.oded.msscbrewery.web.model.BeerStyleEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +14,7 @@ public class BeerServiceImpl implements BeerService {
     public BeerDto getBeerById(UUID beerId) {
         return BeerDto.builder().id(UUID.randomUUID())
                 .beerName("Silver Moon")
-                .beerStyle("Pale Ale")
+                .beerStyle(BeerStyleEnum.PALE_ALE)
                 .build();
     }
 
@@ -21,7 +22,7 @@ public class BeerServiceImpl implements BeerService {
     public BeerDto addBeer(BeerDto beer) {
         return BeerDto.builder().id(UUID.randomUUID())
                 .beerName("Silver Moon")
-                .beerStyle("Pale Ale")
+                .beerStyle(BeerStyleEnum.PALE_ALE)
                 .build();
     }
 

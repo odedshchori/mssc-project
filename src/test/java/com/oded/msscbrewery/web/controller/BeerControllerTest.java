@@ -3,6 +3,7 @@ package com.oded.msscbrewery.web.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.oded.msscbrewery.services.BeerService;
 import com.oded.msscbrewery.web.model.BeerDto;
+import com.oded.msscbrewery.web.model.BeerStyleEnum;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -42,7 +43,7 @@ public class BeerControllerTest {
     public void setUp() {
         validBeer = BeerDto.builder().id(UUID.randomUUID())
                 .beerName("Beer1")
-                .beerStyle("PALE_ALE")
+                .beerStyle(BeerStyleEnum.PALE_ALE)
                 .upc(123456789012L)
                 .build();
     }
